@@ -10,6 +10,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.storage.ktx.storage
 import com.google.firebase.database.ktx.database
+import com.mco.mchat.firebase.FirebaseAuthSource
 import com.mco.mchat.firebase.FirebaseDataSource
 import com.mco.mchat.firebase.FirebaseStorageSource
 
@@ -20,7 +21,7 @@ val appModule = module {
     single { Firebase.storage }
     single { Firebase.database }
     single { FirebaseDataSource() }
-    single { FirebaseDataSource() }
+    single { FirebaseAuthSource() }
     single { FirebaseStorageSource() }
 }
 

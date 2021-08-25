@@ -1,7 +1,7 @@
 package com.mco.mchat.data.repo
 
-import com.mco.mchat.Utils.wrapSnapshotToArrayList
-import com.mco.mchat.Utils.wrapSnapshotToClass
+import com.mco.mchat.utils.wrapSnapshotToArrayList
+import com.mco.mchat.utils.wrapSnapshotToClass
 import com.mco.mchat.data.entity.*
 import com.mco.mchat.firebase.FirebaseDataSource
 import com.mco.mchat.data.Result

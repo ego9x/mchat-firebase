@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="cardViewFlatStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">8dp</item>
+        <item name="strokeColor">@color/transparent</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="cardViewBottomSheetStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">25dp</item>
+        <item name="strokeColor">@color/transparent</item>
+        <item name="cardElevation">0dp</item>
+        <item name="android:layout_marginBottom">-25dp</item>
+    </style>
+
+    <style name="Theme.Default" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- these should be the correct ones -->
+        <item name="enterAnim">@anim/slide_left</item>
+        <item name="exitAnim">@anim/wait_anim</item>
+        <item name="popEnterAnim">@anim/wait_anim</item>
+        <item name="popExitAnim">@anim/slide_right</item>
+    </style>
+</resources>

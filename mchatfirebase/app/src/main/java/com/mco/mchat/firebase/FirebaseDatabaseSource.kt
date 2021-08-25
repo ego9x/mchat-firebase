@@ -3,8 +3,8 @@ package com.mco.mchat.firebase
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.database.*
-import com.mco.mchat.Utils.wrapSnapshotToArrayList
-import com.mco.mchat.Utils.wrapSnapshotToClass
+import com.mco.mchat.utils.wrapSnapshotToArrayList
+import com.mco.mchat.utils.wrapSnapshotToClass
 import com.mco.mchat.data.Result
 import com.mco.mchat.data.entity.*
 import org.koin.core.component.KoinComponent
@@ -90,7 +90,7 @@ class FirebaseReferenceChildObserver {
 // Task based
 class FirebaseDataSource: KoinComponent {
 
-    private val dbInstance: FirebaseDatabase by inject()
+    val dbInstance: FirebaseDatabase by inject()
 
     //region Private
 

@@ -1,4 +1,4 @@
-package com.mco.mchat.Utils
+package com.mco.mchat.utils
 
 import com.google.firebase.database.DataSnapshot
 

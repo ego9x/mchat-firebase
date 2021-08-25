@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navChats"
+        android:icon="@drawable/ic_chat_bubble"
+        android:title="@string/chat" />
+    <item
+        android:id="@+id/navUsers"
+        android:icon="@drawable/ic_people"
+        android:title="@string/user" />
+    <item
+        android:id="@+id/navSettings"
+        android:icon="@drawable/ic_account_circle"
+        android:title="@string/profile" />
+</menu>
