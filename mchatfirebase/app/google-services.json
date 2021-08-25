@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "546395516896",
+    "project_id": "mchat-97ea4",
+    "storage_bucket": "mchat-97ea4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546395516896:android:9f1ec380f3f357c44ec585",
+        "android_client_info": {
+          "package_name": "com.mco.mchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546395516896-9eg5ppcv281bpil2v6aib3uhhef8mdvr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mco.mchat",
+            "certificate_hash": "26e2e38402ba2fc49868b71be6c59c7c1edbc880"
+          }
+        },
+        {
+          "client_id": "546395516896-1ouo25443hgu9mia5ck5mb21stafhc81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgvZTiVW0yyP6dKFUwWqHJAsVWCSS_Vpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "546395516896-1ouo25443hgu9mia5ck5mb21stafhc81.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
