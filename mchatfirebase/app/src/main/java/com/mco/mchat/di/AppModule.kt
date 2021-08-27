@@ -10,9 +10,11 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.storage.ktx.storage
 import com.google.firebase.database.ktx.database
+import com.mco.mchat.data.storage.PrefsDataStoreManager
 import com.mco.mchat.firebase.FirebaseAuthSource
 import com.mco.mchat.firebase.FirebaseDataSource
 import com.mco.mchat.firebase.FirebaseStorageSource
+import org.koin.android.ext.koin.androidApplication
 
 val appModule = module {
     single { provideRetrofit(get()) }
@@ -23,6 +25,7 @@ val appModule = module {
     single { FirebaseDataSource() }
     single { FirebaseAuthSource() }
     single { FirebaseStorageSource() }
+    single { PrefsDataStoreManager(androidApplication().applicationContext) }
 }
 
 fun provideOkHttpClient(): OkHttpClient {

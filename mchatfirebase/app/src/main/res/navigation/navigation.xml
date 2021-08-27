@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/introFragment"
-    >
+    app:startDestination="@id/introFragment">
 
     <fragment
         android:id="@+id/introFragment"
         android:name="com.mco.mchat.ui.introduce.IntroFragment"
-        android:label="Intro" >
+        android:label="Intro"
+        tools:layout="@layout/fragment_intro"
+        >
+        <action
+            android:id="@+id/actionIntroToChat"
+            app:destination="@id/chatFragment"
+            app:popUpTo="@id/introFragment"
+            app:launchSingleTop="true"
+            />
         <action
             android:id="@+id/actionIntroToSignUp"
             app:destination="@id/signUpFragment" />
@@ -20,13 +28,37 @@
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.mco.mchat.ui.signUpFragment.SignUpFragment"
-        android:label="Reg" >
+        android:label="SignUp"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/actionSignUpToChat"
+            app:destination="@id/chatFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:launchSingleTop="true"
+            />
     </fragment>
 
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.mco.mchat.ui.signIn.SignInFragment"
-        android:label="Login" >
+        android:label="SignIn"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/actionSignInToChat"
+            app:destination="@id/chatFragment"
+            app:popUpTo="@id/signInFragment"
+            app:launchSingleTop="true"
+            />
     </fragment>
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.mco.mchat.ui.main.chat.ChatFragment"
+        android:label="chat"
+        tools:layout="@layout/fragment_chat"
+        >
+    </fragment>
+
+
 
 </navigation>

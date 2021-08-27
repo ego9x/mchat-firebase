@@ -6,9 +6,13 @@
         android:icon="@drawable/ic_chat_bubble"
         android:title="@string/chat" />
     <item
+        android:id="@+id/navNotify"
+        android:icon="@drawable/ic_baseline_notifications_24"
+        android:title="@string/notify" />
+    <item
         android:id="@+id/navUsers"
         android:icon="@drawable/ic_people"
-        android:title="@string/user" />
+        android:title="@string/people" />
     <item
         android:id="@+id/navSettings"
         android:icon="@drawable/ic_account_circle"

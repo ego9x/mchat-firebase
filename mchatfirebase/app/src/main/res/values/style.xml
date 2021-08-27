@@ -20,4 +20,25 @@
         <item name="popEnterAnim">@anim/wait_anim</item>
         <item name="popExitAnim">@anim/slide_right</item>
     </style>
+
+    <style name="editTextStyle" parent="Widget.AppCompat.EditText">
+        <!--        <item name="android:textColorHint">@color/light_gray</item>-->
+        <item name="android:textColor">@color/text_default_color</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:maxLength">30</item>
+    </style>
+
+    <style name="WinDowTransparentDialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
 </resources>

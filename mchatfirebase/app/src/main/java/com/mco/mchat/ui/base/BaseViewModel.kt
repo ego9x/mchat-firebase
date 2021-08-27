@@ -8,25 +8,25 @@ import com.mco.mchat.data.Result
 
 open class BaseViewModel: ViewModel() {
 
-    protected val mSnackBarText = SingleLiveEvent<String>()
-    val snackBarText: SingleLiveEvent<String> = mSnackBarText
+    protected val mMessage = SingleLiveEvent<String>()
+    val message: SingleLiveEvent<String> = mMessage
 
-    private val mDataLoading = SingleLiveEvent<Boolean>()
-    val dataLoading: SingleLiveEvent<Boolean> = mDataLoading
+    protected val mLoading = SingleLiveEvent<Boolean>()
+    val loading: SingleLiveEvent<Boolean> = mLoading
 
     protected fun <T> onResult(mutableLiveData: MutableLiveData<T>? = null, result: Result<T>) {
         when (result) {
-            is Result.Loading -> mDataLoading.value = true
+            is Result.Loading -> mLoading.value = true
 
             is Result.Error -> {
-                mDataLoading.value = false
-                result.msg?.let { mSnackBarText.value = it }
+                mLoading.value = false
+                result.msg?.let { mMessage.value = it }
             }
 
             is Result.Success -> {
-                mDataLoading.value = false
+                mLoading.value = false
                 result.data?.let { mutableLiveData?.value = it }
-                result.msg?.let { mSnackBarText.value = it }
+                result.msg?.let { mMessage.value = it }
             }
         }
     }
