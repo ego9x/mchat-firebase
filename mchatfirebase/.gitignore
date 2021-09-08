@@ -10,10 +10,10 @@
 .DS_Store
 /build
 /captures
+google-services.json
 .externalNativeBuild
 .cxx
 local.properties
-
 
 # Created by https://www.toptal.com/developers/gitignore/api/kotlin,android
 # Edit at https://www.toptal.com/developers/gitignore?templates=kotlin,android
