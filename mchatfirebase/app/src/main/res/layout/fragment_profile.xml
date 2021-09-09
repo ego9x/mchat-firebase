@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.main.profile.ProfileFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/arc_shape"
+        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardInfo"
+        style="@style/cardViewFlatStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/guidelineHead"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintWidth_percent="0.85"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <xyz.schwaab.avvylib.AvatarView
+                android:id="@+id/avatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginVertical="15dp"
+                app:avvy_border_color="@color/gray"
+                app:avvy_border_highlight_color="@color/strong_cyan"
+                app:avvy_border_highlight_color_end="@color/purple_200"
+                app:avvy_border_thickness="2dp"
+                app:avvy_border_thickness_highlight="3dp"
+                app:avvy_distance_to_border="2dp"
+                app:avvy_highlighted="true"
+                app:avvy_text_color="@color/dark"
+                app:avvy_text_size="42sp"
+                app:avvy_loading_arches="5"
+                app:avvy_show_badge="true"
+                app:avvy_badge_radius="15dp"
+                app:avvy_badge_stroke_width="3dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:avvy_loading_arches_degree_area="90"
+                tools:avvy_text="Loc Tran"
+                />
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginStart="15dp"
+                android:textColor="@color/dark_grayish"
+                app:layout_constraintStart_toEndOf="@id/avatar"
+                app:layout_constraintTop_toTopOf="@id/avatar"
+                app:layout_constraintBottom_toBottomOf="@id/avatar"
+                tools:text="Lộc Trần"
+                />
+
+            <View
+                android:id="@+id/divide"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/light_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/avatar"
+                />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:textColor="@color/dark_grayish"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divide"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="Long time no see !!"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardFriend"
+        style="@style/cardViewFlatStyle"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/cardInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.85"
+        android:layout_marginTop="15dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTitleUserList"
+                android:text="@string/friends"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/gray"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcUser"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:padding="5dp"
+                tools:listitem="@layout/user_item_layout"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/tvTitleUserList"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btLogout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="75dp"
+        android:background="@drawable/button_style_gradient"
+        android:paddingVertical="15dp"
+        android:text="@string/logout"
+        android:textAllCaps="false"
+        android:textColor="@color/white_50"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

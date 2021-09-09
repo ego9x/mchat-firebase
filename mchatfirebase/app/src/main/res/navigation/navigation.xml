@@ -13,7 +13,7 @@
         >
         <action
             android:id="@+id/actionIntroToChat"
-            app:destination="@id/chatFragment"
+            app:destination="@id/navChats"
             app:popUpTo="@id/introFragment"
             app:launchSingleTop="true"
             />
@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/actionSignUpToChat"
-            app:destination="@id/chatFragment"
+            app:destination="@id/navChats"
             app:popUpTo="@id/signUpFragment"
             app:launchSingleTop="true"
             />
@@ -45,18 +45,37 @@
         tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/actionSignInToChat"
-            app:destination="@id/chatFragment"
+            app:destination="@id/navChats"
             app:popUpTo="@id/signInFragment"
             app:launchSingleTop="true"
             />
     </fragment>
 
     <fragment
-        android:id="@+id/chatFragment"
+        android:id="@+id/navChats"
         android:name="com.mco.mchat.ui.main.chat.ChatFragment"
         android:label="chat"
-        tools:layout="@layout/fragment_chat"
-        >
+        tools:layout="@layout/fragment_chat">
+    </fragment>
+
+    <fragment
+        android:id="@+id/navNotify"
+        android:name="com.mco.mchat.ui.main.notify.NotifyFragment"
+        android:label="notify"
+        tools:layout="@layout/fragment_notify">
+    </fragment>
+
+    <fragment
+        android:id="@+id/navProfile"
+        android:name="com.mco.mchat.ui.main.profile.ProfileFragment"
+        android:label="notify"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/actionLogout"
+            app:destination="@id/signInFragment"
+            app:popUpTo="@id/navProfile"
+            app:launchSingleTop="true"
+            />
     </fragment>
 
 

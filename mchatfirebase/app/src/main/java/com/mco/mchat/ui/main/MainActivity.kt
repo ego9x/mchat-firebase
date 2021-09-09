@@ -44,15 +44,16 @@ class MainActivity : AppCompatActivity(),KoinComponent {
 
             val appBarConfiguration = AppBarConfiguration(
                 setOf(
+                    R.id.navNotify,
                     R.id.navChats,
-                    R.id.navUsers,
-                    R.id.navSettings,
+                    R.id.navProfile,
                     R.id.introFragment
                 )
             )
 
             setupActionBarWithNavController(navController, appBarConfiguration)
             navView.setupWithNavController(navController)
+
         }
     }
 
@@ -72,8 +73,8 @@ class MainActivity : AppCompatActivity(),KoinComponent {
     }
 
     override fun onResume() {
+        super.onResume()
         viewModel.firebaseDatabaseService.dbInstance.goOnline()
         //setupViewModelObservers()
-        super.onResume()
     }
 }

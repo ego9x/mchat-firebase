@@ -1,6 +1,7 @@
 package com.mco.mchat.utils
 
 import android.content.Context
+import android.content.DialogInterface
 import android.view.Gravity
 import android.view.Window
 import android.view.WindowManager
@@ -20,5 +21,15 @@ object DialogHelper {
         )
         window?.setGravity(Gravity.CENTER)
         return loadingDialog
+    }
+
+    fun alert(context: Context, msg: String, onPositiveClick: DialogInterface.OnClickListener? = null, onNegativeClick: DialogInterface.OnClickListener? = null): AlertDialog{
+        val builder = AlertDialog.Builder(context)
+        builder.setMessage(msg)
+            .setPositiveButton(context.getString(R.string.ok),
+                onPositiveClick)
+            .setNegativeButton(context.getString(R.string.cancel),
+                onNegativeClick)
+        return builder.create()
     }
 }

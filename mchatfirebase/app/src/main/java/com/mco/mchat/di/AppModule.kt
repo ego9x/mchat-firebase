@@ -13,6 +13,7 @@ import com.google.firebase.database.ktx.database
 import com.mco.mchat.data.storage.PrefsDataStoreManager
 import com.mco.mchat.firebase.FirebaseAuthSource
 import com.mco.mchat.firebase.FirebaseDataSource
+import com.mco.mchat.firebase.FirebaseReferenceValueObserver
 import com.mco.mchat.firebase.FirebaseStorageSource
 import org.koin.android.ext.koin.androidApplication
 
@@ -21,8 +22,9 @@ val appModule = module {
     single { provideOkHttpClient() }
     single { Firebase.auth }
     single { Firebase.storage }
-    single { Firebase.database }
+    single { Firebase.database("https://mchat-97ea4-default-rtdb.asia-southeast1.firebasedatabase.app/") }
     single { FirebaseDataSource() }
+    single { FirebaseReferenceValueObserver() }
     single { FirebaseAuthSource() }
     single { FirebaseStorageSource() }
     single { PrefsDataStoreManager(androidApplication().applicationContext) }

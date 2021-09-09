@@ -22,7 +22,6 @@ class SignInViewModel(private val authRepository: AuthRepository,val dataStorage
             viewModelScope.launch {
                 mLoading.value = true
                 authRepository.loginUser(login) { result: Result<FirebaseUser> ->
-                    onResult(null, result)
                     if (result is Result.Success) _isLoggedInEvent.value = result.data
                 }
                 mLoading.value = false
