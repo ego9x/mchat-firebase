@@ -9,6 +9,7 @@ import com.mco.mchat.data.model.CreateUser
 import com.mco.mchat.databinding.FragmentSignUpBinding
 import com.mco.mchat.ui.base.BaseFragment
 import com.mco.mchat.utils.animationOptions
+import com.mco.mchat.utils.forceHideKeyboard
 import com.mco.mchat.utils.showSnackBar
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,6 +32,7 @@ class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
 
         viewModel.message.observe(viewLifecycleOwner, {
             binding.root.showSnackBar(it)
+            binding.root.forceHideKeyboard()
         })
 
         viewModel.isCreatedUser.observe(viewLifecycleOwner, {

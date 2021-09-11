@@ -13,6 +13,7 @@ import com.mco.mchat.databinding.FragmentChatBoxBinding
 import com.mco.mchat.ui.base.BaseFragment
 import com.mco.mchat.ui.main.chat.chatBox.adapter.MessagesListAdapter
 import com.mco.mchat.utils.animationOptions
+import com.mco.mchat.utils.forceHideKeyboard
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -89,16 +90,18 @@ class ChatBoxFragment : BaseFragment(R.layout.fragment_chat_box) {
 
             imgBack.setOnClickListener {
                 findNavController().popBackStack()
+                root.forceHideKeyboard()
             }
             scroll()
-
         }
     }
 
     private fun scroll(){
         Handler(Looper.getMainLooper()).postDelayed({
-            binding.rcMessage.smoothScrollToPosition(messageAdapter.itemCount - 1)
-        }, 200)
+            if(messageAdapter.itemCount > 5){
+                binding.rcMessage.smoothScrollToPosition(messageAdapter.itemCount - 1)
+            }
+        }, 300)
     }
 
     override fun onDestroyView() {

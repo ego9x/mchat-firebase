@@ -12,6 +12,7 @@ import com.mco.mchat.data.storage.PrefsDataStoreManager
 import com.mco.mchat.databinding.FragmentSignInBinding
 import com.mco.mchat.ui.base.BaseFragment
 import com.mco.mchat.utils.animationOptions
+import com.mco.mchat.utils.forceHideKeyboard
 import com.mco.mchat.utils.showSnackBar
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -38,6 +39,7 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
 
         viewModel.message.observe(viewLifecycleOwner, { text ->
             binding.root.showSnackBar(text)
+            binding.root.forceHideKeyboard()
         })
 
         viewModel.isLoggedInEvent.observe(viewLifecycleOwner, {
