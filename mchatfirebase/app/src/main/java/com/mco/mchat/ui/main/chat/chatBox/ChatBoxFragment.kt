@@ -1,9 +1,12 @@
 package com.mco.mchat.ui.main.chat.chatBox
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.mco.mchat.R
 import com.mco.mchat.databinding.FragmentChatBoxBinding
@@ -25,6 +28,8 @@ class ChatBoxFragment : BaseFragment(R.layout.fragment_chat_box) {
             requireArguments().getString(ARGS_KEY_CHAT_ID)
         )
     }
+
+    private lateinit var listAdapterObserver: RecyclerView.AdapterDataObserver
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,7 +58,15 @@ class ChatBoxFragment : BaseFragment(R.layout.fragment_chat_box) {
 
     private fun setupView() {
         with(binding) {
+            listAdapterObserver = (object : RecyclerView.AdapterDataObserver() {
+                override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                    binding.rcMessage.smoothScrollToPosition(positionStart)
+                }
+
+            })
+
             messageAdapter = MessagesListAdapter(viewModel.userID)
+            messageAdapter.registerAdapterDataObserver(listAdapterObserver)
 
             rcMessage.layoutManager = LinearLayoutManager(
                 requireContext(),
@@ -62,7 +75,6 @@ class ChatBoxFragment : BaseFragment(R.layout.fragment_chat_box) {
             )
 
             rcMessage.adapter = messageAdapter
-
             btSend.setOnClickListener {
                 edtMessage.text.toString().let {
                     if(it.isNotEmpty()){
@@ -71,10 +83,27 @@ class ChatBoxFragment : BaseFragment(R.layout.fragment_chat_box) {
                 }
             }
 
+            edtMessage.setOnClickListener {
+                scroll()
+            }
+
             imgBack.setOnClickListener {
                 findNavController().popBackStack()
             }
+            scroll()
+
         }
+    }
+
+    private fun scroll(){
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.rcMessage.smoothScrollToPosition(messageAdapter.itemCount - 1)
+        }, 200)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        messageAdapter.unregisterAdapterDataObserver(listAdapterObserver)
     }
 
     companion object {

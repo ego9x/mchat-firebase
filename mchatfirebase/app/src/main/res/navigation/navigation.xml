@@ -84,7 +84,7 @@
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/actionLogout"
-            app:destination="@id/signInFragment"
+            app:destination="@id/introFragment"
             app:popUpTo="@id/navProfile"
             app:launchSingleTop="true"
             />

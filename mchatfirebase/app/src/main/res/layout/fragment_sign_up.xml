@@ -55,6 +55,7 @@
                 android:background="@drawable/input_style"
                 android:hint="@string/full_name"
                 android:imeOptions="actionNext"
+                android:inputType="text"
                 android:paddingHorizontal="25dp"
                 android:paddingVertical="15dp"
                 android:selectAllOnFocus="true"

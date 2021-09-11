@@ -23,6 +23,8 @@ val appModule = module {
     single { FirebaseDataSource() }
     single { FirebaseReferenceValueObserver() }
     single { FirebaseReferenceChildObserver() }
+    single { FirebaseAuthStateObserver() }
+    single { FirebaseReferenceConnectedObserver() }
     single { FirebaseAuthSource() }
     single { FirebaseStorageSource() }
     single { PrefsDataStoreManager(androidApplication().applicationContext) }
