@@ -19,7 +19,7 @@ val appModule = module {
     single { provideOkHttpClient() }
     single { Firebase.auth }
     single { Firebase.storage }
-    single { Firebase.database("https://mchat-97ea4-default-rtdb.asia-southeast1.firebasedatabase.app/") }
+    single { Firebase.database("https://m-chat-production-default-rtdb.asia-southeast1.firebasedatabase.app/") }
     single { FirebaseDataSource() }
     single { FirebaseReferenceValueObserver() }
     single { FirebaseReferenceChildObserver() }
