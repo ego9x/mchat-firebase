@@ -26,7 +26,7 @@ class IntroFragment : BaseFragment(R.layout.fragment_intro) {
     }
 
     private fun setupViewModel() {
-        viewModel.userID.observe(viewLifecycleOwner, {
+        viewModel.userIdLive.observe(viewLifecycleOwner, {
             if(it.isNotEmpty()){
                 findNavController().navigate(R.id.actionIntroToChat)
             }

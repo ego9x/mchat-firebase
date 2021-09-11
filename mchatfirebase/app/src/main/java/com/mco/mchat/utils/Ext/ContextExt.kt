@@ -1,4 +1,4 @@
-package com.mco.mchat.utils.context
+package com.mco.mchat.utils.Ext
 
 import android.content.Context
 import android.content.Intent

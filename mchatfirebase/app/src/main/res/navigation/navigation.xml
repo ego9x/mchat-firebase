@@ -51,11 +51,23 @@
             />
     </fragment>
 
+
+    <fragment
+        android:id="@+id/chatBoxFragment"
+        android:name="com.mco.mchat.ui.main.chat.chatBox.ChatBoxFragment"
+        android:label="chatBox"
+        tools:layout="@layout/fragment_chat_box">
+    </fragment>
+
     <fragment
         android:id="@+id/navChats"
-        android:name="com.mco.mchat.ui.main.chat.ChatFragment"
+        android:name="com.mco.mchat.ui.main.chat.chats.ChatsFragment"
         android:label="chat"
         tools:layout="@layout/fragment_chat">
+        <action
+            android:id="@+id/actionChatToChatBox"
+            app:destination="@id/chatBoxFragment"
+            />
     </fragment>
 
     <fragment

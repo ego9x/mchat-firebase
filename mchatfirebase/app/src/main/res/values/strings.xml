@@ -23,4 +23,11 @@
     <string name="rationale_storage">You need to grant storage permission.</string>
     <string name="storage_app_settings">Please grant storage permission in App Settings</string>
     <string name="logout">Đăng Xuất</string>
+    <string name="add_friend">Add Friend</string>
+    <string name="request_send"> Send Request</string>
+    <string name="accept">Accept</string>
+    <string name="remove_friend">Remove Friend</string>
+    <string name="decline">Decline</string>
+    <string name="send">Gửi</string>
+    <string name="copyright">Copyright © 2021 Tí Chuột</string>
 </resources>

@@ -9,3 +9,11 @@ val animationOptions = NavOptions.Builder()
     .setPopEnterAnim(R.anim.wait_anim)
     .setPopExitAnim(R.anim.slide_right).build()
 
+
+val refreshToken = NavOptions.Builder()
+    .setLaunchSingleTop(true)
+    .setEnterAnim(R.anim.slide_left)
+    .setExitAnim(R.anim.wait_anim)
+    .setPopEnterAnim(R.anim.wait_anim)
+    .setPopExitAnim(R.anim.slide_right).build()
+

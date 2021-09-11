@@ -7,20 +7,18 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.mco.mchat.R
-import com.mco.mchat.data.entity.UserFriend
 import com.mco.mchat.databinding.FragmentProfileBinding
 import com.mco.mchat.ui.base.BaseFragment
 import com.mco.mchat.ui.main.profile.adapter.UserItem
+import com.mco.mchat.ui.main.profile.friend.FriendDialogFragment
 import com.mco.mchat.utils.DialogHelper
 import com.mco.mchat.utils.animationOptions
-import com.mco.mchat.utils.context.loadImageFromStorage
-import com.mco.mchat.utils.context.openAppSettings
+import com.mco.mchat.utils.Ext.loadImageFromStorage
+import com.mco.mchat.utils.Ext.openAppSettings
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
-import com.mikepenz.fastadapter.listeners.ClickEventHook
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -93,6 +91,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
             rcUser.adapter = fastAdapter
 
             fastAdapter.onClickListener = { _, _, item, _ ->
+                FriendDialogFragment.newInstance(item.user.info.id).show(childFragmentManager,FriendDialogFragment.TAG)
                 false
             }
 
@@ -103,6 +102,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
             btLogout.setOnClickListener {
                 viewModel.logout()
             }
+
         }
 
     }

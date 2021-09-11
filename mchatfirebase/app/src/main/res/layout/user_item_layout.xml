@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="15dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_margin="15dp">
 
     <xyz.schwaab.avvylib.AvatarView
         android:id="@+id/avatar"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        app:avvy_badge_radius="9dp"
+        app:avvy_badge_stroke_width="3dp"
         app:avvy_border_color="@color/gray"
         app:avvy_border_highlight_color="@color/strong_cyan"
         app:avvy_border_highlight_color_end="@color/strong_cyan"
@@ -18,22 +20,21 @@
         app:avvy_distance_to_border="2dp"
         app:avvy_highlighted="true"
         app:avvy_loading_arches="5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:avvy_loading_arches_degree_area="90"
         app:layout_constraintEnd_toEndOf="parent"
-        app:avvy_loading_arches_degree_area="90"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
         android:layout_marginTop="5dp"
         android:textColor="@color/gray"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/avatar"
-        tools:text="Lộc Trần"
-        />
+        tools:text="Lộc Trần" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,17 @@
-package com.mco.mchat.ui.main.profile.adapter
+package com.mco.mchat.ui.main.notify.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import coil.load
 import com.mco.mchat.R
 import com.mco.mchat.data.entity.User
+import com.mco.mchat.data.entity.UserInfo
+import com.mco.mchat.data.entity.UserNotification
+import com.mco.mchat.databinding.NotifyItemLayoutBinding
 import com.mco.mchat.databinding.UserItemLayoutBinding
 import com.mikepenz.fastadapter.binding.AbstractBindingItem
-import java.util.*
 
-class UserItem(val user: User) : AbstractBindingItem<UserItemLayoutBinding>() {
+class NotificationItem(val userInfo: UserInfo) : AbstractBindingItem<NotifyItemLayoutBinding>() {
 
     override val type: Int
         get() = R.id.adapter_user_id
@@ -21,16 +23,16 @@ class UserItem(val user: User) : AbstractBindingItem<UserItemLayoutBinding>() {
     override fun createBinding(
         inflater: LayoutInflater,
         parent: ViewGroup?
-    ): UserItemLayoutBinding {
-        return UserItemLayoutBinding.inflate(inflater, parent, false)
+    ): NotifyItemLayoutBinding {
+        return NotifyItemLayoutBinding.inflate(inflater, parent, false)
     }
 
-    override fun bindView(binding: UserItemLayoutBinding, payloads: List<Any>) {
+    override fun bindView(binding: NotifyItemLayoutBinding, payloads: List<Any>) {
         with(binding) {
-            user.info.let {
+            userInfo.let {
                 avatar.load(it.profileImageUrl)
-                avatar.showBadge = user.info.online
                 tvUserName.text = it.displayName
+                tvStatus.text = it.status
             }
         }
     }

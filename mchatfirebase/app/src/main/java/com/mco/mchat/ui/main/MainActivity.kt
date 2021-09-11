@@ -33,11 +33,10 @@ class MainActivity : AppCompatActivity(),KoinComponent {
             val navController = findNavController(R.id.nav_host_fragment)
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
-                  /*  R.id.profileFragment -> navView.visibility = View.GONE
-                    R.id.chatFragment -> navView.visibility = View.GONE*/
                     R.id.introFragment -> navView.visibility = View.GONE
                     R.id.signInFragment -> navView.visibility = View.GONE
                     R.id.signUpFragment -> navView.visibility = View.GONE
+                    R.id.chatBoxFragment -> navView.visibility = View.GONE
                     else -> navView.visibility = View.VISIBLE
                 }
             }

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="12dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <xyz.schwaab.avvylib.AvatarView
+        android:id="@+id/avatarView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginVertical="15dp"
+        app:avvy_badge_radius="12dp"
+        app:avvy_badge_stroke_width="3dp"
+        app:avvy_border_color="@color/gray"
+        app:avvy_border_highlight_color="@color/strong_cyan"
+        app:avvy_border_highlight_color_end="@color/purple_200"
+        app:avvy_border_thickness="2dp"
+        app:avvy_border_thickness_highlight="3dp"
+        app:avvy_distance_to_border="2dp"
+        app:avvy_highlighted="true"
+        app:avvy_loading_arches="5"
+        app:avvy_loading_arches_degree_area="90"
+        app:avvy_show_badge="true"
+        app:avvy_text_color="@color/dark"
+        app:avvy_text_size="42sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:avvy_text="Loc Tran" />
+
+    <TextView
+        android:id="@+id/tvDisplayName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/tvMessage"
+        app:layout_constraintEnd_toStartOf="@id/timeText"
+        app:layout_constraintStart_toEndOf="@id/avatarView"
+        app:layout_constraintTop_toTopOf="@id/avatarView"
+        tools:text="Display name" />
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/avatarView"
+        app:layout_constraintEnd_toStartOf="@id/notSeenView"
+        app:layout_constraintStart_toStartOf="@id/tvDisplayName"
+        app:layout_constraintTop_toBottomOf="@id/tvDisplayName"
+        tools:text="Message" />
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:textSize="12sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvDisplayName"
+        tools:text="11:00 AM" />
+
+    <View
+        android:id="@+id/notSeenView"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/tvMessage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toTopOf="@id/tvMessage"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

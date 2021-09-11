@@ -22,11 +22,9 @@ class ProfileViewModel(
     private val dbRepository: DatabaseRepository,
     private val storageRepository: StorageRepository,
     private val authRepository: AuthRepository,
-    val prefsDataStoreManager: PrefsDataStoreManager,
     private val firebaseReferenceObserver: FirebaseReferenceValueObserver
 ) : BaseViewModel() {
 
-    lateinit var userID: String
 
     private val _userInfo: MutableLiveData<UserInfo> = MutableLiveData()
     val userInfo: LiveData<UserInfo> = _userInfo
@@ -35,12 +33,6 @@ class ProfileViewModel(
     val friends = MediatorLiveData<List<UserItem>>()
 
     init {
-        viewModelScope.launch {
-            prefsDataStoreManager.userID.collect { userId ->
-                userID = userId
-            }
-        }
-
         loadAndObserveUserInfo(userID)
         friends.addSource(friendResponses) { _ ->
             friends.value = friendResponses.value?.filter { it.info.id != userID }?.map {

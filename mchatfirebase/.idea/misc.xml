@@ -4,16 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.246875" />
+        <entry key="app/src/main/res/drawable-v24/button_style_border_gray.xml" value="0.25729166666666664" />
+        <entry key="app/src/main/res/drawable-v24/button_style_gradient_white.xml" value="0.25729166666666664" />
         <entry key="app/src/main/res/drawable/arc_shape.xml" value="0.20555555555555555" />
         <entry key="app/src/main/res/drawable/bg_gray_radius.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/drawable/button_style.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/drawable/button_style_border_cyan.xml" value="0.25729166666666664" />
         <entry key="app/src/main/res/drawable/button_style_gradient.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/drawable/button_style_gray.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/drawable/gradient_main.xml" value="0.23148148148148148" />
         <entry key="app/src/main/res/drawable/input_style.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/drawable/slide_left.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23177083333333334" />
-        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.23177083333333334" />
+        <entry key="app/src/main/res/layout/chat_item_layout.xml" value="0.24114583333333334" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_chat_box.xml" value="0.22708333333333333" />
         <entry key="app/src/main/res/layout/fragment_intro.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.23177083333333334" />
         <entry key="app/src/main/res/layout/fragment_notify.xml" value="0.21770833333333334" />
@@ -21,6 +26,10 @@
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.23177083333333334" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_users.xml" value="0.23177083333333334" />
+        <entry key="app/src/main/res/layout/friend_dialog_fragment_layout.xml" value="0.24114583333333334" />
+        <entry key="app/src/main/res/layout/message_item_layout.xml" value="0.24114583333333334" />
+        <entry key="app/src/main/res/layout/message_sender_item_layout.xml" value="0.24114583333333334" />
+        <entry key="app/src/main/res/layout/notify_item_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/progress_dialog_view.xml" value="0.23177083333333334" />
         <entry key="app/src/main/res/layout/user_item_layout.xml" value="0.375" />
         <entry key="app/src/main/res/layout/user_item_view.xml" value="0.23177083333333334" />
