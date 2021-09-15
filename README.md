@@ -1,10 +1,6 @@
 ![Webp net-resizeimage](https://user-images.githubusercontent.com/57881768/133377007-36bb36f2-ca83-4362-8b36-d522cc070a18.png)
-![1631356480450](https://user-images.githubusercontent.com/57881768/133377085-a1f127ad-568b-47be-82e6-cb1c2a564426.JPEG)
-![1631356480443](https://user-images.githubusercontent.com/57881768/133377090-daace325-b25e-4996-9464-1e790c6b9297.JPEG)
-![1631356480429](https://user-images.githubusercontent.com/57881768/133377099-5a5ef68d-0cef-41c9-b745-a816439e9ffb.JPEG)
-![1631356480436](https://user-images.githubusercontent.com/57881768/133377107-b6f9d130-0fee-4aaa-8191-b2f8337cf67f.JPEG)
 
-# Link to PlayStore : https://play.google.com/store/apps/details?id=com.mco.mchat
+Link to PlayStore : https://play.google.com/store/apps/details?id=com.mco.mchat
 
 # MCO chat with firebase
 ## Feature
