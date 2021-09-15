@@ -3,6 +3,7 @@ package com.mco.mchat.ui.main.chat.chats
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.mco.mchat.data.model.ChatWithUserInfo
 import com.mco.mchat.data.Result
 import com.mco.mchat.data.entity.Chat
@@ -14,6 +15,7 @@ import com.mco.mchat.ui.base.BaseViewModel
 import com.mco.mchat.utils.Ext.addNewItem
 import com.mco.mchat.utils.Ext.updateItemAt
 import com.mco.mchat.utils.convertTwoUserIDs
+import kotlinx.coroutines.launch
 
 class ChatsViewModel(private val repository: DatabaseRepository): BaseViewModel() {
 
@@ -60,16 +62,19 @@ class ChatsViewModel(private val repository: DatabaseRepository): BaseViewModel(
     }
 
     private fun loadAndObserveChat(userInfo: UserInfo) {
-        val observer = FirebaseReferenceValueObserver()
-        firebaseReferenceObserverList.add(observer)
-        repository.loadAndObserveChat(convertTwoUserIDs(userID, userInfo.id), observer) { result: Result<Chat> ->
-            if (result is Result.Success) {
-                _updatedChatWithUserInfo.value = result.data?.let { ChatWithUserInfo(it, userInfo) }
-            } else if (result is Result.Error) {
-                chatsList.value?.let {
-                    val newList = mutableListOf<ChatWithUserInfo>().apply { addAll(it) }
-                    newList.removeIf { it2 -> result.msg.toString().contains(it2.mUserInfo.id) }
-                    chatsList.value = newList
+        viewModelScope.launch {
+            val observer = FirebaseReferenceValueObserver()
+            firebaseReferenceObserverList.add(observer)
+            repository.loadAndObserveChat(convertTwoUserIDs(userID, userInfo.id), observer) { result: Result<Chat> ->
+                onResult(null, result)
+                if (result is Result.Success) {
+                    _updatedChatWithUserInfo.value = result.data?.let { ChatWithUserInfo(it, userInfo) }
+                } else if (result is Result.Error) {
+                    chatsList.value?.let {
+                        val newList = mutableListOf<ChatWithUserInfo>().apply { addAll(it) }
+                        newList.removeIf { it2 -> result.msg.toString().contains(it2.mUserInfo.id) }
+                        chatsList.value = newList
+                    }
                 }
             }
         }

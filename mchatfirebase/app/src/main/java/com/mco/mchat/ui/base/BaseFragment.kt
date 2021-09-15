@@ -3,9 +3,11 @@ package com.mco.mchat.ui.base
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import coil.load
 import com.mco.mchat.R
 import com.mco.mchat.ui.main.MainActivity
 import permissions.dispatcher.PermissionRequest
+import xyz.schwaab.avvylib.AvatarView
 
 open class BaseFragment(resLayout: Int): Fragment(resLayout) {
 
@@ -24,5 +26,20 @@ open class BaseFragment(resLayout: Int): Fragment(resLayout) {
             .setCancelable(false)
             .setMessage(messageResId)
             .show()
+    }
+
+    fun AvatarView.loadCustom(url: String?){
+        url?.let{
+            load(it) {
+                listener(
+                    onStart = {
+                        showLoadingDialog()
+                    },
+                    onSuccess = { _, _ ->
+                        hideLoadingDialog()
+                    }
+                ).build()
+            }
+        }
     }
 }

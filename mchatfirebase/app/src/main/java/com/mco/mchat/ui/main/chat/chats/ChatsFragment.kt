@@ -36,6 +36,10 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chat) {
         viewModel.chatsList.observe(viewLifecycleOwner,{ chats ->
             chatAdapter.set(chats.map { ChatItem(it) })
         })
+
+        viewModel.loading.observe(viewLifecycleOwner, {
+            if(it) showLoadingDialog() else hideLoadingDialog()
+        })
     }
 
     private fun setupView() {

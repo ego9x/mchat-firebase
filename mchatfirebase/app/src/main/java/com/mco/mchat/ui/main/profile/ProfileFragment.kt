@@ -27,7 +27,7 @@ import permissions.dispatcher.ktx.PermissionsRequester
 import permissions.dispatcher.ktx.constructPermissionsRequest
 
 class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
-    lateinit var binding : FragmentProfileBinding
+    lateinit var binding: FragmentProfileBinding
     private val viewModel: ProfileViewModel by viewModel()
     lateinit var userAdapter: ItemAdapter<UserItem>
     private lateinit var storagePermissionsRequester: PermissionsRequester
@@ -48,25 +48,28 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
         lifecycleScope.launch {
             viewModel.prefsDataStoreManager.userID.collect { userId ->
-                if(userId.isEmpty())
+                if (userId.isEmpty())
                     findNavController().navigate(R.id.actionLogout, null, animationOptions)
             }
         }
     }
 
-    private val registerForActivityResult = registerForActivityResult(ActivityResultContracts.GetContent()){
-        it?.let{
-            requireContext().loadImageFromStorage(it)?.apply {
-                viewModel.changeUserImage(this)
+    private val registerForActivityResult =
+        registerForActivityResult(ActivityResultContracts.GetContent()) {
+            it?.let {
+                requireContext().loadImageFromStorage(it)?.apply {
+                    viewModel.changeUserImage(this)
+                }
             }
         }
-    }
 
     private fun setupViewModel() {
         viewModel.userInfo.observe(viewLifecycleOwner, { user ->
-            with(binding){
+            with(binding) {
                 user.profileImageUrl.let {
-                    if(it.isNotEmpty()) avatar.load(it) else avatar.text = user.displayName
+                    if (it.isNotEmpty()) {
+                        avatar.load(it)
+                    } else avatar.text = user.displayName
                 }
                 tvUserName.text = user.displayName
                 tvStatus.text = user.status
@@ -75,6 +78,10 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
         viewModel.friends.observe(viewLifecycleOwner, {
             userAdapter.set(it)
+        })
+
+        viewModel.loading.observe(viewLifecycleOwner, {
+            if(it) showLoadingDialog() else hideLoadingDialog()
         })
     }
 
@@ -91,7 +98,8 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
             rcUser.adapter = fastAdapter
 
             fastAdapter.onClickListener = { _, _, item, _ ->
-                FriendDialogFragment.newInstance(item.user.info.id).show(childFragmentManager,FriendDialogFragment.TAG)
+                FriendDialogFragment.newInstance(item.user.info.id)
+                    .show(childFragmentManager, FriendDialogFragment.TAG)
                 false
             }
 
@@ -122,7 +130,6 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
             { _, _ -> requireContext().openAppSettings() }
         ) { dialog, _ -> dialog.dismiss() }.show()
     }
-
 
 
 }

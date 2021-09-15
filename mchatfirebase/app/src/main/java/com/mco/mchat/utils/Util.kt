@@ -5,9 +5,11 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import coil.load
 import com.google.android.material.snackbar.Snackbar
 import com.mco.mchat.R
 import com.mikepenz.fastadapter.binding.BindingViewHolder
+import xyz.schwaab.avvylib.AvatarView
 
 fun View.showSnackBar(text: String) {
     Snackbar.make(this.rootView.findViewById(R.id.main_layout), text, Snackbar.LENGTH_SHORT).show()
