@@ -1,4 +1,4 @@
-![Webp net-resizeimage](https://user-images.githubusercontent.com/57881768/133377007-36bb36f2-ca83-4362-8b36-d522cc070a18.png)
+<img src="https://user-images.githubusercontent.com/57881768/133377007-36bb36f2-ca83-4362-8b36-d522cc070a18.png" width="200">
 
 Link to PlayStore : https://play.google.com/store/apps/details?id=com.mco.mchat
 
