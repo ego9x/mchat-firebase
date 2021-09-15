@@ -2,7 +2,6 @@
 
 Link to PlayStore : https://play.google.com/store/apps/details?id=com.mco.mchat
 
-# MCO chat with firebase
 ## Feature
 1. MVVM Achitecture
 2. Koin for dependency injection
