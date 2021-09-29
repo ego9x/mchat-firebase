@@ -1,5 +1,6 @@
 package com.mco.mchat.ui.signUpFragment
 
+import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -46,12 +47,15 @@ class SignUpViewModel(
             mMessage.value = "Họ và tên trống !"
             return false
         }
-
-        if (createUser.email.isEmpty()) {
+        else if (createUser.email.isEmpty()) {
             mMessage.value = "Địa chỉ email trống !"
             return false
         }
-        if (createUser.password.isEmpty()) {
+        else if(!Patterns.EMAIL_ADDRESS.matcher(createUser.email).matches()){
+            mMessage.value = "Địa chỉ email sai định dạng !"
+            return false
+        }
+        else if (createUser.password.isEmpty()) {
             mMessage.value = "Mật khẩu trống !"
             return false
         }

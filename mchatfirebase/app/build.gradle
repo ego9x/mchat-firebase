@@ -12,13 +12,26 @@ android {
         applicationId "com.mco.mchat"
         minSdk 24
         targetSdk 30
-        versionCode 3
-        versionName "1.0"
+        versionCode 5
+        versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+        debug {
+            versionNameSuffix "d"
+            debuggable true
+        }
+        staging{
+            initWith debug
+            versionNameSuffix "s"
+            debuggable true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                    'proguard-rules.pro'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -35,6 +48,14 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    android.applicationVariants.all { variant ->
+        def formattedDate = new Date().format('yyyyMMdd')
+        variant.outputs.all {
+            def appName = "MCO-Chat-${defaultConfig.versionName}-${formattedDate}.apk"
+            outputFileName = appName
+        }
     }
 }
 

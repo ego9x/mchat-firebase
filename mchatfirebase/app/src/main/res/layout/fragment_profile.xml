@@ -1,191 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
     tools:context=".ui.main.profile.ProfileFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineHead"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1"
-        />
+        tools:context=".ui.main.profile.ProfileFragment">
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/arc_shape"
-        app:layout_constraintHeight_percent="0.35"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/profile"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="20dp"
-        android:textColor="@color/white"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/arc_shape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.35"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardInfo"
-        style="@style/cardViewFlatStyle"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/guidelineHead"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.3"
-        app:layout_constraintWidth_percent="0.85"
-        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/profile"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardInfo"
+            style="@style/cardViewFlatStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guidelineHead"
+            app:layout_constraintWidth_percent="0.85">
 
-            <xyz.schwaab.avvylib.AvatarView
-                android:id="@+id/avatar"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginVertical="15dp"
-                app:avvy_border_color="@color/gray"
-                app:avvy_border_highlight_color="@color/strong_cyan"
-                app:avvy_border_highlight_color_end="@color/purple_200"
-                app:avvy_border_thickness="2dp"
-                app:avvy_border_thickness_highlight="3dp"
-                app:avvy_distance_to_border="2dp"
-                app:avvy_highlighted="true"
-                app:avvy_text_color="@color/dark"
-                app:avvy_text_size="42sp"
-                app:avvy_loading_arches="5"
-                app:avvy_show_badge="true"
-                app:avvy_badge_radius="15dp"
-                app:avvy_badge_stroke_width="3dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:avvy_loading_arches_degree_area="90"
-                tools:avvy_text="Loc Tran"
-                />
-
-            <TextView
-                android:id="@+id/tvUserName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:padding="10dp"
-                android:textSize="24sp"
-                android:layout_marginVertical="20dp"
-                android:layout_marginStart="15dp"
-                android:textColor="@color/dark_grayish"
-                app:layout_constraintStart_toEndOf="@id/avatar"
-                app:layout_constraintTop_toTopOf="@id/avatar"
-                app:layout_constraintBottom_toBottomOf="@id/avatar"
-                tools:text="Lộc Trần"
-                />
-
-            <View
-                android:id="@+id/divide"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/light_gray"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/avatar"
-                />
-
-            <TextView
-                android:id="@+id/tvStatus"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:padding="10dp"
-                android:textSize="14sp"
-                android:textColor="@color/dark_grayish"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divide"
-                app:layout_constraintBottom_toBottomOf="parent"
-                tools:text="Long time no see !!"
-                />
+                android:layout_height="match_parent">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/icEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_edit"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardFriend"
-        style="@style/cardViewFlatStyle"
-        android:layout_width="0dp"
-        android:layout_height="160dp"
-        android:backgroundTint="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/cardInfo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.85"
-        android:layout_marginTop="15dp"
-        >
+                <xyz.schwaab.avvylib.AvatarView
+                    android:id="@+id/avatar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginVertical="15dp"
+                    android:layout_marginStart="15dp"
+                    app:avvy_badge_radius="15dp"
+                    app:avvy_badge_stroke_width="3dp"
+                    app:avvy_border_color="@color/gray"
+                    app:avvy_border_highlight_color="@color/strong_cyan"
+                    app:avvy_border_highlight_color_end="@color/purple_200"
+                    app:avvy_border_thickness="2dp"
+                    app:avvy_border_thickness_highlight="3dp"
+                    app:avvy_distance_to_border="2dp"
+                    app:avvy_highlighted="true"
+                    app:avvy_loading_arches="5"
+                    app:avvy_loading_arches_degree_area="90"
+                    app:avvy_show_badge="true"
+                    app:avvy_text_color="@color/dark"
+                    app:avvy_text_size="42sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:avvy_text="Loc Tran" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
+                    android:layout_marginStart="15dp"
+                    android:maxLines="3"
+                    android:padding="10dp"
+                    android:textColor="@color/dark_grayish"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/avatar"
+                    app:layout_constraintEnd_toStartOf="@id/icEdit"
+                    app:layout_constraintStart_toEndOf="@id/avatar"
+                    app:layout_constraintTop_toTopOf="@id/avatar"
+                    tools:text="Lộc Trần" />
 
-            <TextView
-                android:id="@+id/tvTitleUserList"
-                android:text="@string/friends"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="@color/gray"
-                android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                <View
+                    android:id="@+id/divide"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/light_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/avatar" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcUser"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:padding="5dp"
-                tools:listitem="@layout/user_item_layout"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/tvTitleUserList"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                />
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:padding="10dp"
+                    android:textColor="@color/dark_grayish"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divide" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                <EditText
+                    android:id="@+id/edtStatus"
+                    style="@style/editTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/button_style_border_cyan"
+                    android:hint="@string/status"
+                    android:inputType="textMultiLine"
+                    android:padding="15dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btUpdate"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divide" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btLogout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="75dp"
-        android:background="@drawable/button_style_gradient"
-        android:paddingVertical="15dp"
-        android:text="@string/logout"
-        android:textAllCaps="false"
-        android:textColor="@color/white_50"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
+                <Button
+                    android:id="@+id/btUpdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/button_style_gradient"
+                    android:text="@string/update"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/edtStatus"
+                    app:layout_constraintTop_toTopOf="@id/edtStatus" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardFriend"
+            style="@style/cardViewFlatStyle"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardInfo"
+            app:layout_constraintWidth_percent="0.85">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvTitleUserList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginVertical="10dp"
+                    android:text="@string/friends"
+                    android:textColor="@color/gray"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcUser"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitleUserList"
+                    tools:listitem="@layout/user_item_layout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btLogout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="75dp"
+            android:background="@drawable/button_style_gradient"
+            android:paddingVertical="15dp"
+            android:text="@string/logout"
+            android:textAllCaps="false"
+            android:textColor="@color/white_50"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

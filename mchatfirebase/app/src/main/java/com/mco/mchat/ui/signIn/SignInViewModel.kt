@@ -1,5 +1,6 @@
 package com.mco.mchat.ui.signIn
 
+import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -23,6 +24,7 @@ class SignInViewModel(private val authRepository: AuthRepository,val dataStorage
                 mLoading.value = true
                 authRepository.loginUser(login) { result: Result<FirebaseUser> ->
                     if (result is Result.Success) _isLoggedInEvent.value = result.data
+                    else _isLoggedInEvent.value = null
                 }
                 mLoading.value = false
             }
@@ -32,11 +34,15 @@ class SignInViewModel(private val authRepository: AuthRepository,val dataStorage
 
     private fun validate(login: Login): Boolean {
         if (login.email.isEmpty()) {
-            message.value = "Invalid email format"
+            message.value = "Địa chỉ email trống !"
+            return false
+        }
+        else if(!Patterns.EMAIL_ADDRESS.matcher(login.email).matches()){
+            mMessage.value = "Địa chỉ email sai định dạng !"
             return false
         }
         else if (login.password.isEmpty()) {
-            message.value = "Invalid password format"
+            message.value = "Mật khẩu trống !"
             return false
         }
         return true

@@ -111,6 +111,23 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
                 viewModel.logout()
             }
 
+            icEdit.setOnClickListener {
+                edtStatus.visibility = View.VISIBLE
+                btUpdate.visibility = View.VISIBLE
+                tvStatus.visibility = View.GONE
+            }
+
+            btUpdate.setOnClickListener {
+                edtStatus.visibility = View.GONE
+                btUpdate.visibility = View.GONE
+                tvStatus.visibility = View.VISIBLE
+                edtStatus.text.toString().let {
+                    if(it.isNotEmpty()){
+                        viewModel.changeUserStatus(it)
+                    }
+                }
+            }
+
         }
 
     }

@@ -43,7 +43,10 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
         })
 
         viewModel.isLoggedInEvent.observe(viewLifecycleOwner, {
-            it?.let {
+            if (it == null) {
+                binding.root.showSnackBar(getString(R.string.login_fail))
+                binding.root.forceHideKeyboard()
+            } else {
                 lifecycleScope.launch {
                     viewModel.dataStorage.setUserID(it.uid)
                 }

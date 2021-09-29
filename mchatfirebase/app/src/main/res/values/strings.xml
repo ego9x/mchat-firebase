@@ -30,4 +30,7 @@
     <string name="decline">Decline</string>
     <string name="send">Gửi</string>
     <string name="copyright">Copyright © 2021 Tí Chuột</string>
+    <string name="login_fail">Tên đăng nhập hoặc mật khẩu sai</string>
+    <string name="status">Nhập Trạng thái</string>
+    <string name="update">Cập Nhật</string>
 </resources>
