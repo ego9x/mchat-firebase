@@ -4,6 +4,7 @@ import android.Manifest
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import com.mco.mchat.databinding.FragmentProfileBinding
 import com.mco.mchat.ui.base.BaseFragment
 import com.mco.mchat.ui.main.profile.adapter.UserItem
 import com.mco.mchat.ui.main.profile.friend.FriendDialogFragment
+import com.mco.mchat.ui.main.profile.updateInfo.UpdateInfoDialog
 import com.mco.mchat.utils.DialogHelper
 import com.mco.mchat.utils.animationOptions
 import com.mco.mchat.utils.Ext.loadImageFromStorage
@@ -37,6 +39,9 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         binding = FragmentProfileBinding.bind(view)
         setupView()
         setupViewModel()
+
+        setupStatusResult()
+
 
         storagePermissionsRequester = constructPermissionsRequest(
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -81,7 +86,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         })
 
         viewModel.loading.observe(viewLifecycleOwner, {
-            if(it) showLoadingDialog() else hideLoadingDialog()
+            if (it) showLoadingDialog() else hideLoadingDialog()
         })
     }
 
@@ -112,24 +117,23 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
             }
 
             icEdit.setOnClickListener {
-                edtStatus.visibility = View.VISIBLE
-                btUpdate.visibility = View.VISIBLE
-                tvStatus.visibility = View.GONE
-            }
-
-            btUpdate.setOnClickListener {
-                edtStatus.visibility = View.GONE
-                btUpdate.visibility = View.GONE
-                tvStatus.visibility = View.VISIBLE
-                edtStatus.text.toString().let {
-                    if(it.isNotEmpty()){
-                        viewModel.changeUserStatus(it)
-                    }
-                }
+                UpdateInfoDialog.newInstance(tvStatus.text.toString())
+                    .show(childFragmentManager, UpdateInfoDialog.TAG)
             }
 
         }
 
+    }
+
+    private fun setupStatusResult() {
+        childFragmentManager.setFragmentResultListener(
+            UpdateInfoDialog.STATUS_REQUEST_KEY,
+            viewLifecycleOwner
+        ) { _, bundle ->
+            bundle.getString(UpdateInfoDialog.STATUS_ITEM_KEY)?.let {
+                viewModel.changeUserStatus(it)
+            }
+        }
     }
 
     private fun openGallery() = registerForActivityResult.launch("image/*")

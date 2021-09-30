@@ -64,9 +64,9 @@
                     android:layout_marginEnd="5dp"
                     android:padding="10dp"
                     android:src="@drawable/ic_edit"
-                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/divide"
+                    />
 
                 <xyz.schwaab.avvylib.AvatarView
                     android:id="@+id/avatar"
@@ -121,43 +121,16 @@
 
                 <TextView
                     android:id="@+id/tvStatus"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:padding="10dp"
+                    android:padding="15dp"
+                    tools:text="No status"
                     android:textColor="@color/dark_grayish"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/icEdit"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divide" />
-
-                <EditText
-                    android:id="@+id/edtStatus"
-                    style="@style/editTextStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:background="@drawable/button_style_border_cyan"
-                    android:hint="@string/status"
-                    android:inputType="textMultiLine"
-                    android:padding="15dp"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btUpdate"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/divide" />
-
-                <Button
-                    android:id="@+id/btUpdate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/button_style_gradient"
-                    android:text="@string/update"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/edtStatus"
-                    app:layout_constraintTop_toTopOf="@id/edtStatus" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

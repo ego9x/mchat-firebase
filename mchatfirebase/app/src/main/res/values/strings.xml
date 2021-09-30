@@ -33,4 +33,5 @@
     <string name="login_fail">Tên đăng nhập hoặc mật khẩu sai</string>
     <string name="status">Nhập Trạng thái</string>
     <string name="update">Cập Nhật</string>
+    <string name="update_status">Cập nhật trạng thái</string>
 </resources>
