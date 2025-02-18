@@ -6,7 +6,7 @@ on:
       - synchronize
       - reopened
     branches:
-      - develop
+      - master
 jobs:
   create_version_name_and_code:
     runs-on: ubuntu-latest
@@ -49,7 +49,6 @@ jobs:
       output_version_name: ${{ steps.set-output.outputs.version_name }}
       output_version_code: ${{ steps.set-output.outputs.version_code }}
 
-
   build_source_and_deploy:
     needs: [ create_version_name_and_code ]
     env:
@@ -61,24 +60,23 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
           cache: gradle
 
-#      - name: Bump Version
-#        uses: chkfung/android-version-actions@v1.2.3
-#        with:
-#          gradlePath: app/build.gradle
-#          versionCode: ${{ env.VERSION_CODE }}
-#          versionName: ${{ env.VERSION_NAME }}
+      - name: Bump Version
+        uses: chkfung/android-version-actions@v1.2.3
+        with:
+          gradlePath: composeApp/build.gradle.kts
+          versionCode: ${{ env.VERSION_CODE }}
+          versionName: ${{ env.VERSION_NAME }}
 
       - name: Create Google Services JSON File & KeyProperties File
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
-#          KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
-        run: | 
-          echo $GOOGLE_SERVICES_JSON | openssl base64 -d -out ./setupci/app/google-services.json
-#          echo $GOOGLE_SERVICES_JSON | base64 -di > ./app/google-services.json
-
+          KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
+        run: |
+          echo $GOOGLE_SERVICES_JSON | base64 -di > ./composeApp/google-services.json
+          echo $KEY_PROPERTIES | base64 --decode > ./key.properties
 
       - name: Build with Gradle
         uses: gradle/actions/setup-gradle@v3
@@ -89,7 +87,7 @@ jobs:
         name: Sign app Apk file
         id: sign_apk_file
         with:
-          releaseDirectory: setupci/app/build/outputs/apk/release
+          releaseDirectory: composeApp/build/outputs/apk/release
           signingKeyBase64: ${{ secrets.ANDROID_SIGNING_KEY }}
           alias: ${{ secrets.ANDROID_ALIAS }}
           keyStorePassword: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
@@ -101,7 +99,7 @@ jobs:
         name: Sign app Aab file
         id: sign_aab_file
         with:
-          releaseDirectory: mchatfirebase/app/build/outputs/bundle/release
+          releaseDirectory: composeApp/build/outputs/bundle/release
           signingKeyBase64: ${{ secrets.ANDROID_SIGNING_KEY }}
           alias: ${{ secrets.ANDROID_ALIAS }}
           keyStorePassword: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
@@ -112,21 +110,31 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: mchat_${{ env.VERSION_NAME }}_${{ env.VERSION_CODE }}
+          name: wallpics_${{ env.VERSION_NAME }}_${{ env.VERSION_CODE }}
           path: ${{steps.sign_apk_file.outputs.signedReleaseFile}}
 
       - name: Upload and Distribute App
         uses: emertozd/Firebase-Distribution-Github-Action@v2
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
           serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
           file: ${{ steps.sign_apk_file.outputs.signedReleaseFile }}
           groups: 'test'
           #releaseNotes: 'This is a test release'
 
+      - name: Upload to Google Play
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          packageName: com.paulbaker.wallpics
+          releaseFiles: ${{ steps.sign_aab_file.outputs.signedReleaseFile }}
+          track: internal
+          status: completed
+
       - name: Push Tag
         run: |
-          git config user.name loctran.dev
-          git config user.email quangloc507@gmail.com
+          git config user.name long06031999
+          git config user.email long.dev.1999@gmail.com
           git tag ${{ env.VERSION_NAME }}
           git push --tags
